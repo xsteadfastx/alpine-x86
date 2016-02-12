@@ -19,10 +19,6 @@ mkdir -p "$ROOTFS/etc/apk"
 echo "$MIRROR/v$VERSION/main" > "$ROOTFS/etc/apk/repositories"
 echo "$MIRROR/v$VERSION/community" >> "$ROOTFS/etc/apk/repositories"
 
-# RESOLV
-echo "nameserver 8.8.8.8" > $ROOTFS/etc/resolv.conf
-echo "nameserver 8.8.4.4" >> $ROOTFS/etc/resolv.conf
-
 tar -z -f rootfs.tar.gz --numeric-owner -C "$ROOTFS" -c .
 mv rootfs.tar.gz /data
 chown $USERID /data/rootfs.tar.gz

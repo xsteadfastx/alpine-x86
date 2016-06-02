@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
 MIRROR=http://nl.alpinelinux.org/alpine
+TOOLS_VERSION="2.6.7-r0"
 ROOTFS="/tmp/rootfs"
 VERSION=$1
 
 # TOOLS
 mkdir /root/apk-tools-static
 cd /root/apk-tools-static
-wget "$MIRROR/latest-stable/main/x86/apk-tools-static-2.6.5-r1.apk"
-tar -xzf apk-tools-static-2.6.5-r1.apk
+wget "$MIRROR/latest-stable/main/x86/apk-tools-static-$TOOLS_VERSION.apk"
+tar -xzf apk-tools-static-$TOOLS_VERSION.apk
 
 # CREATE CHROOT
 ./sbin/apk.static -X $MIRROR/$VERSION/main -U --allow-untrusted --root $ROOTFS --initdb add alpine-base
